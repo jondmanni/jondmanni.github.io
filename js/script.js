@@ -116,7 +116,7 @@ $(document).ready(function() {
     player.mute();
     player.playVideo();
     player.setVolume(100);
-  } stop.
+  }
 
   function stopVideo() {
     player.stopVideo();
