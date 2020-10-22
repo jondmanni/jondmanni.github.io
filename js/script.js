@@ -92,19 +92,6 @@ $(document).ready(function() {
   //     });
   //   }
 
-  var playerConfig = {},                 // Define the player config here
-      queue = {                          // To queue a function and invoke when player is ready
-        content: null,
-        push: function(fn) {
-          this.content = fn;
-        },
-        pop: function() {
-          this.content.call();
-          this.content = null;
-        }
-      },
-      player;
-
   // 2. This code loads the IFrame Player API code asynchronously.
   var tag = document.createElement('script');
 
@@ -117,49 +104,32 @@ $(document).ready(function() {
   var player;
   function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
-      playerVars: playerConfig,
       events: {
         'onReady': onPlayerReady
       }
     });
   }
 
-  // API event: when the player is ready, call the function in the queue
-  function onPlayerReady() {
-    if (queue.content) queue.pop();
-  }
-
-  // Helper function to check if the player is ready
-  function isPlayerReady(player) {
-    return player && typeof player.playVideo === 'function';
-  }
-
-  // Instead of calling player.playVideo() directly,
-  // using this function to play the video.
-  // If the player is not ready, queue player.playVideo() and invoke it when the player is ready
-  function playVideo(player) {
-    isPlayerReady(player) ? player.playVideo() : queue.push(function() {
-                                                 player.playVideo();
-                                               });
-  }
 
   // 4. The API will call this function when the video player is ready.
-  // function onPlayerReady(event) {
-  //   event.target.playVideo();
-  // } stop.
+  function onPlayerReady(player) {
+    player.mute();
+    player.playVideo();
+    player.setVolume(100);
+  } stop.
 
   function stopVideo() {
     player.stopVideo();
   }
-
 
   $('#section_two').waypoint(function(direction, player){
     if (direction == "down") {
       alert('hit section two going down');
       var url = "https://open.spotify.com/embed/track/6Ve0uXNyidx63j0yfUBzRx";
       $("#spotify").attr("src", url);
-      playSong(spotify_token);
-      playVideo(player);
+      player.mute();
+      player.playVideo();
+      player.setVolume(100);
     }
   });
 
