@@ -138,7 +138,7 @@ $(document).ready(function() {
       alert('hit section two going down');
       var url = "https://open.spotify.com/embed/track/6Ve0uXNyidx63j0yfUBzRx";
       $("#spotify").attr("src", url);
-      playSong(spotify_token);
+      player.playVideo();
     }
   });
 
