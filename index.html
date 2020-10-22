@@ -1,1 +1,89 @@
-Hello World
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+<script src="js/jquery-3.5.1.min.js"></script>
+<script src="js/jquery.waypoints.min.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+<script src="js/spotify-web-api.js"></script>
+
+</head>
+<body>
+
+<div class="blue">
+  <iframe src="https://open.spotify.com/embed/track/7FQ2JgfdkBcBb3BEbu8Axf" width="100%" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media" id="spotify"></iframe>
+</div>
+
+<section>
+  <div class="container">
+
+    <div class="panel panel-default spotify">
+        <div class="panel-heading">
+            <h3 class="panel-title">Spotify</h3>
+        </div>
+        <div class="panel-body">
+            <div class="spotify-login-form">
+                <div class="form-group button-container">
+                    <input class="btn btn-success spotify-login-button" type="button" value="Spotify Login">
+                </div>
+            </div>
+            <div class="spotify-details hidden">
+                <div class="form-group button-container">
+                    <input class="btn btn-info spotify-logout-button" type="button" value="Logout">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+    <h1>Section One</h1>
+
+</section>
+<section id="section_two">
+        <h1>Section Two</h1>
+</section>
+<section>
+        <h1>Section Three</h1>
+</section>
+<section>
+        <h1>Section Four</h1>
+</section>
+<section>
+        <h1>Section Five</h1>
+</section>
+
+
+<script src="https://sdk.scdn.co/spotify-player.js"></script>
+<script>
+window.onSpotifyWebPlaybackSDKReady = () => {
+  const token = 'BQAvHgxZeN8BOH9XAZKJloL_jrYT1FGSaV2nyxkIeDRzRGtLbzCUZWJ4Vyjn12VcjlMmuSbaDzWNPiyQXj076Bz9yNo98PyTw9Yxcjdavq3Tff1xXDxAnWV2RtrEz1lRmj6KwW1VDnYlWKv4CYXnjJ9iOZAiJ7pArw';
+  const player = new Spotify.Player({
+    name: 'Web Playback SDK Quick Start Player',
+    getOAuthToken: cb => { cb(token); }
+  });
+
+  // Error handling
+  player.addListener('initialization_error', ({ message }) => { console.error(message); });
+  player.addListener('authentication_error', ({ message }) => { console.error(message); });
+  player.addListener('account_error', ({ message }) => { console.error(message); });
+  player.addListener('playback_error', ({ message }) => { console.error(message); });
+
+  // Playback status updates
+  player.addListener('player_state_changed', state => { console.log(state); });
+
+  // Ready
+  player.addListener('ready', ({ device_id }) => {
+    console.log('Ready with Device ID', device_id);
+  });
+
+  // Not Ready
+  player.addListener('not_ready', ({ device_id }) => {
+    console.log('Device ID has gone offline', device_id);
+  });
+
+  // Connect to the player!
+  player.connect();
+};
+</script>
+
+</body>
+</html>
