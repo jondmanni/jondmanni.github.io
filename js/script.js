@@ -122,7 +122,7 @@ $(document).ready(function() {
     player.stopVideo();
   }
 
-  $('#section_two').waypoint(function(direction, player){
+  $('#section_two').waypoint(function(direction){
     if (direction == "down") {
       alert('hit section two going down');
       var url = "https://open.spotify.com/embed/track/6Ve0uXNyidx63j0yfUBzRx";
