@@ -112,14 +112,21 @@ $(document).ready(function() {
 
 
   // 4. The API will call this function when the video player is ready.
-  function onPlayerReady(player) {
-    player.mute();
-    player.playVideo();
-    player.setVolume(100);
+  function onPlayerReady(event) {
+    alert('Player is ready!');
+    event.target.mute();
+    event.target.playVideo();
+    event.target.setVolume(100);
   }
 
   function stopVideo() {
     player.stopVideo();
+  }
+  
+  function playVideo() {
+    player.mute();
+    player.playVideo();
+    player.setVolume(100);
   }
 
   $('#section_two').waypoint(function(direction){
@@ -127,9 +134,7 @@ $(document).ready(function() {
       alert('hit section two going down');
       var url = "https://open.spotify.com/embed/track/6Ve0uXNyidx63j0yfUBzRx";
       $("#spotify").attr("src", url);
-      player.mute();
-      player.playVideo();
-      player.setVolume(100);
+      playVideo();
     }
   });
 
