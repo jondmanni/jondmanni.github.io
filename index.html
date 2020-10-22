@@ -55,7 +55,7 @@
 <script src="https://sdk.scdn.co/spotify-player.js"></script>
 <script>
 window.onSpotifyWebPlaybackSDKReady = () => {
-  const token = 'BQAvHgxZeN8BOH9XAZKJloL_jrYT1FGSaV2nyxkIeDRzRGtLbzCUZWJ4Vyjn12VcjlMmuSbaDzWNPiyQXj076Bz9yNo98PyTw9Yxcjdavq3Tff1xXDxAnWV2RtrEz1lRmj6KwW1VDnYlWKv4CYXnjJ9iOZAiJ7pArw';
+  const token = localStorage.getItem('spotify_token');
   const player = new Spotify.Player({
     name: 'Halloween Sp0oky',
     getOAuthToken: cb => { cb(token); }
