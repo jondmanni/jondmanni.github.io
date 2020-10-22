@@ -133,7 +133,7 @@ $(document).ready(function() {
 
 
 
-  $('#section_two').waypoint(function(direction){
+  $('#section_two').waypoint(function(direction, player){
     if (direction == "down") {
       alert('hit section two going down');
       var url = "https://open.spotify.com/embed/track/6Ve0uXNyidx63j0yfUBzRx";
