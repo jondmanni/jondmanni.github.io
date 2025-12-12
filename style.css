@@ -59,6 +59,6 @@ h1  {
 }
 
 .centered-div {
-    width: 80%;       /* Sets width to 80% of its parent container */
-    margin: 0 auto;   /* Centers the div (0 for top/bottom, auto for left/right) *
+    width: 60%;       /* Sets width to 60% of its parent container */
+    margin: 20vh auto;   /* Centers the div (0 for top/bottom, auto for left/right) *
 }
