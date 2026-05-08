@@ -119,8 +119,10 @@ function populateForm(data) {
   renderZipTags();
   if (map) syncMapSelection();
 
-  excludeKeywords = (c.title_keywords || {}).exclude || [];
-  requireKeywords = (c.title_keywords || {}).require_any || [];
+  excludeKeywords.length = 0;
+  excludeKeywords.push(...((c.title_keywords || {}).exclude || []));
+  requireKeywords.length = 0;
+  requireKeywords.push(...((c.title_keywords || {}).require_any || []));
   renderTags("exclude-tags", excludeKeywords, removeExclude);
   renderTags("require-tags", requireKeywords, removeRequire);
 }
