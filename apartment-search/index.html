@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apartment Search — Config</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>Apartment Search</h1>
+      <div id="auth-area">
+        <div id="g_id_onload"
+          data-client_id="GOOGLE_CLIENT_ID_PLACEHOLDER"
+          data-context="signin"
+          data-callback="onGoogleSignIn"
+          data-auto_prompt="false">
+        </div>
+        <div class="g_id_signin"
+          data-type="standard"
+          data-size="large"
+          data-theme="outline"
+          data-text="sign_in_with"
+          data-shape="rectangular"
+          data-logo_alignment="left">
+        </div>
+        <div id="user-info" class="hidden">
+          <span id="user-email"></span>
+          <button id="sign-out-btn" onclick="signOut()">Sign out</button>
+        </div>
+      </div>
+    </header>
+
+    <main id="config-panel" class="hidden">
+      <div class="section">
+        <h2>Rent Range</h2>
+        <div class="row">
+          <label>Min Rent ($)<input type="number" id="min_rent" min="0" step="50" /></label>
+          <label>Max Rent ($)<input type="number" id="max_rent" min="0" step="50" /></label>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Size</h2>
+        <div class="row">
+          <label>Min Sqft<input type="number" id="min_sqft" min="0" step="50" placeholder="no minimum" /></label>
+          <label>Highway Distance (ft)<input type="number" id="min_highway_distance_ft" min="0" step="100" /></label>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Best Fit Criteria</h2>
+        <div class="row">
+          <label>Min Sqft<input type="number" id="best_fit_min_sqft" min="0" step="50" placeholder="no minimum" /></label>
+          <label class="checkbox-label">
+            <input type="checkbox" id="best_fit_require_mini_split" />
+            Require mini-split AC
+          </label>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Allowed Zip Codes</h2>
+        <p class="hint">Click zip code regions on the map to toggle them. Selected zips appear in blue.</p>
+        <div id="selected-zips" class="zip-tags"></div>
+        <div id="zip-map"></div>
+      </div>
+
+      <div class="section">
+        <h2>Keywords</h2>
+        <div class="keyword-group">
+          <label>Exclude (listing skipped if title contains any of these)</label>
+          <div class="tag-input-wrap">
+            <div id="exclude-tags" class="tags"></div>
+            <input type="text" id="exclude-input" placeholder="type + Enter" />
+          </div>
+        </div>
+        <div class="keyword-group">
+          <label>Require any (listing skipped unless title contains at least one)</label>
+          <div class="tag-input-wrap">
+            <div id="require-tags" class="tags"></div>
+            <input type="text" id="require-input" placeholder="type + Enter" />
+          </div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="save-btn" onclick="saveConfig()">Save</button>
+        <span id="save-status"></span>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="app.js"></script>
+</body>
+</html>
