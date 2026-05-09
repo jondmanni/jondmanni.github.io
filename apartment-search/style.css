@@ -17,10 +17,21 @@ header {
   gap: 16px;
 }
 
+.header-title {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
 header h1 {
   margin: 0;
   font-size: 1.25rem;
   font-weight: 600;
+}
+
+#next-run {
+  font-size: 0.8rem;
+  color: #888;
 }
 
 #user-info {

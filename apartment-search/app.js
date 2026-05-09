@@ -1,5 +1,30 @@
 // Config
 const API_BASE = "https://us-west1-gen-lang-client-0737991864.cloudfunctions.net/config-api";
+
+function updateNextRun() {
+  const el = document.getElementById('next-run');
+  if (!el) return;
+  const now = new Date();
+  // Get current time components in PT
+  const p = Object.fromEntries(
+    new Intl.DateTimeFormat('en-US', {
+      timeZone: 'America/Los_Angeles',
+      year: 'numeric', month: '2-digit', day: '2-digit',
+      hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false,
+    }).formatToParts(now).map(x => [x.type, x.value])
+  );
+  // Elapsed milliseconds since start of today (PT)
+  const elapsedMs = (parseInt(p.hour) * 3600 + parseInt(p.minute) * 60 + parseInt(p.second)) * 1000;
+  const startOfTodayPT = now.getTime() - elapsedMs;
+  const todayRun = startOfTodayPT + 18 * 3600 * 1000;
+  const targetMs = todayRun > now.getTime() ? todayRun : todayRun + 86400 * 1000;
+  const diffMs = targetMs - now.getTime();
+  const h = Math.floor(diffMs / 3600000);
+  const m = Math.floor((diffMs % 3600000) / 60000);
+  el.textContent = `next run: 6pm PT (in ${h > 0 ? `${h}h ${m}m` : `${m}m`})`;
+}
+updateNextRun();
+setInterval(updateNextRun, 60000);
 const ALLOWED_EMAILS = ["jondmanni@gmail.com"];
 
 // LA-area zip codes to show on the map (superset covering the typical search area)
