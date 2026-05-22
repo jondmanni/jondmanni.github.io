@@ -29,11 +29,25 @@ const ALLOWED_EMAILS = ["jondmanni@gmail.com", "eliot33@gmail.com"];
 
 // LA-area zip codes to show on the map (superset covering the typical search area)
 const LA_ZIPS_FOCUS = [
-  90026, 90039, 90031, 90027, 90029, 90041, 90042, 90065,
-  90012, 90013, 90014, 90015, 90017, 90019, 90020, 90028,
-  90034, 90035, 90036, 90038, 90046, 90048, 90057, 90064,
-  90066, 90068, 90071, 90089, 90090, 90094, 90095, 91201,
-  91202, 91203, 91204, 91205, 91206, 91207, 91208
+  // Central / Silver Lake / Echo Park / Los Feliz / Downtown
+  90026, 90027, 90028, 90029, 90031, 90012, 90013, 90014,
+  90015, 90017, 90019, 90020, 90057, 90071, 90089, 90090,
+  // East LA / Boyle Heights / El Sereno / City Terrace
+  90022, 90023, 90032, 90033, 90063,
+  // Northeast LA — Atwater / Glassell Park / Mt Washington / Highland Park / Eagle Rock
+  90039, 90041, 90042, 90065,
+  // Glendale
+  91201, 91202, 91203, 91204, 91205, 91206, 91207, 91208,
+  91209, 91210,
+  // La Crescenta / Montrose / La Cañada
+  91011, 91020, 91214,
+  // Pasadena / South Pasadena / San Marino / Arroyo area
+  91030, 91031, 91101, 91103, 91104, 91105, 91106, 91107, 91108,
+  // Altadena / Sierra Madre / Arcadia (northern Arroyo corridor)
+  91001, 91006, 91007, 91024,
+  // West LA / Mid-City / Culver City / Westwood
+  90034, 90035, 90036, 90038, 90046, 90048, 90064, 90066,
+  90068, 90094, 90095,
 ];
 
 // State
