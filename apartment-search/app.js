@@ -25,7 +25,7 @@ function updateNextRun() {
 }
 updateNextRun();
 setInterval(updateNextRun, 60000);
-const ALLOWED_EMAILS = ["jondmanni@gmail.com"];
+const ALLOWED_EMAILS = ["jondmanni@gmail.com", "eliot33@gmail.com"];
 
 // LA-area zip codes to show on the map (superset covering the typical search area)
 const LA_ZIPS_FOCUS = [
